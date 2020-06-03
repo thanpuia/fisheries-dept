@@ -41,5 +41,7 @@ Route::post('/tehsils/create','TehsilController@store')->name('tehsil.create');
 
 Route::get('farmer_list','HomeController@farmerList')->name('farmerList');
 Route::get('farmer_list/{id}','HomeController@findFarmer')->name('findFarmer');
-
-
+// approve section
+Route::get('applications','HomeController@applicationlist')->name('applications');
+Route::post('applications/approve/{id}','HomeController@approve')->name('approve');
+Route::get('applications/find/{id}',"HomeController@viewDetails")->name('viewDetails');
