@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Fishpond;
 use App\Location;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -285,4 +286,6 @@ class FishpondController extends Controller
         $image=$data->image;
         return $image;
     }
+
+   
 }

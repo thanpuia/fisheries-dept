@@ -42,7 +42,7 @@ class HomeController extends Controller
 
     public function applicationlist()
     {
-        $applications=Fishpond::where('approve','null')->get();
+        $applications=Fishpond::where('approve','0')->get();
         return view('applications',['applications'=>$applications]);
     }
     public function viewDetails($id)

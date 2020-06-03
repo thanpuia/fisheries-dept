@@ -29,7 +29,7 @@ class CreateFishpondsTable extends Migration
             $table->string('pondImages')->nullable();
             $table->double('lat',10,8)->nullable();
             $table->double('lng',10,8)->nullable();
-            $table->string('approve')->default('false')->nullable();
+            $table->string('approve')->default('0')->nullable();
 
             $table->timestamps();
             $table->unsignedBigInteger('user_id');

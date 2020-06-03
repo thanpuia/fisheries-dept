@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -33,6 +34,7 @@ Route::post('login', 'PassportController@login');
     Route::get('schemes','SchemeController@listOfSchemes');
 
     Route::get('tehsils','TehsilController@listOfTehsils');
+    Route::post('checkApproval/{id}','PassportController@checkApprove');
 });
 
 

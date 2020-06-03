@@ -51,4 +51,13 @@ class PassportController extends Controller
             return response()->json(['success'=>'false','error' => 'UnAuthorised'], 401);
         }
     }
+
+    public function checkApprove($id)
+    {
+        $data=User::find($id);
+        if($data->approve=="0")
+            return response()->json(['message'=>'fail','data' =>'NUll' ], 401);
+        else
+        return response()->json(['message'=>'success','data' => $data], 500);
+    }
 }
