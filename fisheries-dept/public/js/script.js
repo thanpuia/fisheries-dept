@@ -1,4 +1,4 @@
-//  // AIzaSyBxbv_wIn2sTcqUkUpHwlCE47ak8WIcjmE
+ // AIzaSyBxbv_wIn2sTcqUkUpHwlCE47ak8WIcjmE
 
 var map;
 var myLatlng;
@@ -91,4 +91,4 @@ $(document).ready(function(){
 function closeNav() {
   document.getElementById("mySidenav").style.width = "0%";
 }
- 
+
