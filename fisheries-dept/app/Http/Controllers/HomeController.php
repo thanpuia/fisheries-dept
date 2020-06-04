@@ -56,9 +56,38 @@ class HomeController extends Controller
         $application=Fishpond::find($id);
         $application->approve='1';
         $application->save();
-        $applications=Fishpond::where('approve','null')->get();
+        $applications=Fishpond::where('approve','0')->get();
         return view('applications',['applications'=>$applications]);
-        // return 1;
+    }
+
+    public function resubmit($id)
+    {
+        $application=Fishpond::find($id);
+        $application->approve='2';
+        $application->save();
+        $applications=Fishpond::where('approve','0')->get();
+        return view('applications',['applications'=>$applications]);
+    }
+
+    public function resubmitList()
+    {
+        $resubmit=Fishpond::where('approve','2')->get();
+        return view('resubmit',['resubmit'=>$resubmit]);
+    }
+
+    public function resubmitViewDetails($id)
+    {   
+        $fishpond=Fishpond::findOrFail($id);
+        return view('resubmit_details',['fishpond'=>$fishpond]);
+    }
+    public function approveResubmit($id)
+    {
+        $fishpond=Fishpond::findOrFail($id);
+        $fishpond->approve='1';
+        $fishpond->save();
+        $resubmit=Fishpond::where('approve','2')->get();
+        return view('resubmit',['resubmit'=>$resubmit]);
+
     }
 
 }

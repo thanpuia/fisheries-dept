@@ -4,7 +4,7 @@
     
 @section('content')
 <div class="container">
-    Fresh Applicants
+    Resubmit List
 </div>
 <div class="container">
     <table class="table table-hover">
@@ -14,18 +14,18 @@
                 <th scope="col">Name</th>
                 <th scope="col">Address</th>
                 <th scope="col">District</th>
-                <th></th>
+                
             </tr>
         </thead>
         <tbody>
-        @foreach ($applications as $application)
+        @foreach ($resubmit as $application)
         <tr>
             <th scope="row">{{ $application->id }}</th>
             <td>{{ $application->name }}</td>
             <td>{{ $application->address }}</td>
             <td>{{ $application->district }}</td>
             <td>
-                <a href="/applications/find/{{ $application->id }}"    
+                <a href="/resubmitList/find/{{ $application->id }}"    
                     name="title">
                     <button type="submit" class="btn-success">View</button>    
                 </a>         

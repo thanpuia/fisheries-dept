@@ -36,6 +36,7 @@ class FishpondController extends Controller
         //DB UPLOAD FOR SINGLE PICTURE i.e Profile picture 
         $fishpond = new Fishpond();
         $fishpond->district = $request->district;
+        $fishpond->name= $request->name;
         $fishpond->fname = $request->fname;
         $fishpond->address = $request->address;
         $fishpond->location_of_pond = $request->location_of_pond;
@@ -56,7 +57,7 @@ class FishpondController extends Controller
         else
             return response()->json([
                 'success' => false,
-                'message' => 'Product could not be added'
+                'message' => 'Fishpond could not be added'
             ], 500);
        
     }
@@ -125,6 +126,7 @@ class FishpondController extends Controller
         //$fishpond = new Fishpond();
         $fishpond->district = $request->district;
         $fishpond->fname = $request->fname;
+        $fishpond->name=$request->name;
         $fishpond->address = $request->address;
         $fishpond->location_of_pond = $request->location_of_pond;
         $fishpond->tehsil = $request->tehsil;
@@ -145,7 +147,7 @@ class FishpondController extends Controller
         else
             return response()->json([
                 'success' => false,
-                'message' => 'Product could not be added'
+                'message' => 'Fishpind could not be added'
             ], 500);
     }
 

@@ -13,7 +13,7 @@
                 </a>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="{{ route('home') }}">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="{{ route('farmerList') }}">Farmers <span class="sr-only">(current)</span></a>
@@ -37,8 +37,14 @@
                             <a class="dropdown-item" href="#">Khawzawl</a>
                         </div>
                     </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Dashboard <span class="sr-only">(current)</span></a>
+                    <li class="nav-item dropdown active">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Applications
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="{{ route('applications') }}">Fresh</a>
+                            <a class="dropdown-item" href="{{ route('resubmitList') }}">Resubmit</a>
+                        </div>
                     </li>
                     @guest
                             <li class="nav-item">
