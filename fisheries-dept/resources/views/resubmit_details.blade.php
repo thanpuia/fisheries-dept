@@ -61,17 +61,12 @@
             <tr>
                 <td class="d-flex justify-content-between">
                     {{-- <a class="btn-danger">Reject</a> --}}
-                    <form action="/applications/approve/{{ $fishpond->id }}" method="POST" class="p-2">
+                    <form action="/resubmitList/approve/{{ $fishpond->id }}" method="POST" class="p-2">
                         @csrf
                         <button type="submit" class="btn btn-primary">Approve</button>
                     </form>
-
-                    <form action="/applications/resubmit/{{ $fishpond->id }}" method="POST" class="p-2">
-                        @csrf
-                        <button type="submit" class="btn btn-primary">Resubmit</button>
-                    </form>
                     <div class="p-2">
-                        <a href="{{ route('applications') }}" class="btn btn-primary" >Back</a>
+                        <a href="{{ route('resubmitList') }}" class="btn btn-primary" >Back</a>
                     </div>
                     
                     

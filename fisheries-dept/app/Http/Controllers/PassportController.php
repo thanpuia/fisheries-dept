@@ -43,9 +43,10 @@ class PassportController extends Controller
             $token = auth()->user()->createToken('Fisheries')->accessToken;
             return response()->json(['success'=>'true',
             'token' => $token,
-            // 'id'=>$user->id,
+            'id'=>$user->id,
             'email'=>$request->email,
             'name'=>$user->name,
+            'name'=>$user->role,
         ], 200);
         } else {
             return response()->json(['success'=>'false','error' => 'UnAuthorised'], 401);

@@ -1,11 +1,14 @@
 @extends('layouts.layout')
-@extends('layouts.navbar')
-
+    @extends('layouts.navbar')
+    @section('content')
+    
 @section('content')
-@endsection
-
-@section('content')
-
+<div class="container">
+    Home
+</div>
+<div class="container">
+   
+</div>
 @endsection
 {{-- @extends('layouts.app')
 

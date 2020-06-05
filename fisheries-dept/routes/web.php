@@ -45,3 +45,7 @@ Route::get('farmer_list/{id}','HomeController@findFarmer')->name('findFarmer');
 Route::get('applications','HomeController@applicationlist')->name('applications');
 Route::post('applications/approve/{id}','HomeController@approve')->name('approve');
 Route::get('applications/find/{id}',"HomeController@viewDetails")->name('viewDetails');
+Route::post('applications/resubmit/{id}','HomeController@resubmit')->name('resubmit');
+Route::get('resubmitList','HomeController@resubmitList')->name('resubmitList');
+Route::get('resubmitList/find/{id}',"HomeController@resubmitViewDetails")->name('resubmitViewDetails');
+Route::post('resubmitList/approve/{id}','HomeController@approveResubmit')->name('approveResubmit');

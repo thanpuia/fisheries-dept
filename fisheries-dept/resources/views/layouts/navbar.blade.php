@@ -1,15 +1,16 @@
 <div style="background-color:#007bff;">
-    <nav class="navbar navbar-expand-lg container-fluid navbar-dark bg-primary" style="width:80%;" >
+    <nav class="navbar navbar-expand-lg container-fluid navbar-dark bg-primary container"  >
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
             <a class="navbar-brand" href="#">
-                <img src="{{asset('public/image/logo.svg')}}" style="width:100px;height:53px; margin-top: -7px;">
+                <img src="{{asset('public/image/logo.svg')}}" width="53" height="43">fisheries
+                {{-- style="width:100px;height:53px; margin-top: -7px;" --}}
             </a>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link d-inline-block align-top" href="{{ route('home') }}">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="{{ route('farmerList') }}">Farmers <span class="sr-only">(current)</span></a>
@@ -34,10 +35,18 @@
                     </div>
                 </li>
 
-                <li class="nav-item active">
+                {{-- <li class="nav-item active">
                     <a class="nav-link" href="{{ route('applications') }}">Dashboard <span class="sr-only">(current)</span></a>
+                </li> --}}
+                <li class="nav-item dropdown active">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Applications
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="{{ route('applications') }}">Fresh</a>
+                        <a class="dropdown-item" href="{{ route('resubmitList') }}">Resubmit</a>
+                    </div>
                 </li>
-
                 @guest
                             <li class="nav-item active">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
