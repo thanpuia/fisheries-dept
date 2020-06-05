@@ -84,7 +84,7 @@ class FishpondController extends Controller
             foreach($request->file('pondImages') as $key=>$files)
             {
                 $name=$files->getClientOriginalName();    
-                $files->move('public/image2', $name);      
+                $files->move('public/image', $name);      
                 $data[$key] = $name; 
             }
         }
