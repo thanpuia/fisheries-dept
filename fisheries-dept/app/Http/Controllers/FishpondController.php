@@ -47,13 +47,17 @@ class FishpondController extends Controller
         $fishpond->image = $profileImage;
         $fishpond->lat = $request->lat;
         $fishpond->lng = $request->lng;
+        $fishpond->user_id=$request->user_id;
+        
 
-
-        if (auth()->user()->fishponds()->save($fishpond))
+        if (auth()->user()){
+            $fishpond->save();
             return response()->json([
                 'success' => true,
                 'data' => $fishpond->toArray()
             ]);
+        }
+            
         else
             return response()->json([
                 'success' => false,
