@@ -66,13 +66,32 @@
                 {{ $applications->links() }}
             </div>
         </div>
-        <div class="container">
-            <div class="chat-box">
-                <div class="open">Open
-                    <div class="box">
-                        <br>
-                        Test
-                        <br>
+        <div class="container" >
+            <div class="chat-box" style="background: white;" id="sms-box">
+                <div class="open">
+                    <div class="bg-blue sms-header">Send Message
+                        <button class="sms-close-button" onclick="closeFunction()">x</button></div> 
+                    <div class="box" style="padding:20px">
+                        <form>
+                            <div class="form-group">
+                                <select class=" form-control-sm sms-input-border" style="opacity:0.7">
+                                    <option value="" disabled selected>District</option>
+                                    <option>Aizawl</option>
+                                </select>
+                            </div>
+                            <div class="form-group" style="opacity:0.7">
+                                <select class="form-control-sm sms-input-border" placeholder="tets">
+                                    <option value="" disabled selected>Tehsil</option>
+                                    <option>tehsil1123</option>
+                                </select>
+                            </div>
+                            <br>
+                            <div class="form-group" style="opacity:0.7">
+                                <textarea class="sms-input-border" id="exampleFormControlTextarea1" rows="1"
+                                placeholder="Type Your Message Here"></textarea>
+                            </div>
+                            <button type="button" class="btn btn-primary btn-md btn-block">Send</button>
+                          </form>
                     </div>
                 <div>
             <div>
@@ -89,5 +108,8 @@
     
     function closeNav() {
       document.getElementById("mySidenav").style.width = "0";
+    }
+    function closeFunction(){
+        document.getElementById("sms-box").style.height = "30px";
     }
     </script>

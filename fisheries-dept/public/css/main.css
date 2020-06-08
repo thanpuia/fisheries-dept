@@ -8,6 +8,7 @@
 
 .bg-blue{
   background-color:#1473E7;
+  color: whitesmoke;
 }
 
 .mainframe { 
@@ -153,7 +154,28 @@
   position: absolute;
   bottom: 0;
   right: 0;
+  width: 300px;
   transition: 0.5s;
+}
+
+/* send SMS */
+.sms-header{
+  width:100%;
+  border:10px;
+  padding-top:10px;
+  padding-bottom:10px;
+  padding-left:20px;
+}
+.sms-close-button{
+  color:black;
+  float: right;
+  padding-right:20px;
+}
+.sms-input-border{
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  width: 100%;
 }
 /* .box{
   transition: height 1s ease-out;
