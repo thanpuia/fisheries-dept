@@ -33,8 +33,10 @@ class FishpondController extends Controller
            // $insert['image'] = "$profileImage";
          }
 
+         
         //DB UPLOAD FOR SINGLE PICTURE i.e Profile picture 
         $fishpond = new Fishpond();
+        
         $fishpond->district = $request->district;
         $fishpond->name= $request->name;
         $fishpond->fname = $request->fname;
@@ -48,10 +50,11 @@ class FishpondController extends Controller
         $fishpond->lat = $request->lat;
         $fishpond->lng = $request->lng;
         $fishpond->user_id=$request->user_id;
+        $fishpond->save();
         
 
         if (auth()->user()){
-            $fishpond->save();
+            
             return response()->json([
                 'success' => true,
                 'data' => $fishpond->toArray()
@@ -72,10 +75,7 @@ class FishpondController extends Controller
 
     public function uploadpond(Request $request, $id)
     {
-
-        error_log("called from android");
         $fishpond = auth()->user()->fishponds()->find($id);
-        
         //$updated = $fishpond->fill($request->all())->save();
         $data = [];
         if($request->hasfile('pondImages'))
@@ -88,7 +88,7 @@ class FishpondController extends Controller
                 $data[$key] = $name; 
             }
         }
-        
+        // dd($data);
         $pond=implode(",",$data);
         //$updated = $fishpond->fill($request->all())->save();
         $fishpond->pondImages=$pond;
