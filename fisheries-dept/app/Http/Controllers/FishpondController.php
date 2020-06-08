@@ -77,16 +77,20 @@ class FishpondController extends Controller
     {
         $fishpond = auth()->user()->fishponds()->find($id);
         //$updated = $fishpond->fill($request->all())->save();
-        $data = [];
+       
         if($request->hasfile('pondImages'))
         {
-          
+            $data = [];
             foreach($request->file('pondImages') as $key=>$files)
             {
                 $name=$files->getClientOriginalName();    
                 $files->move('public/image', $name);      
                 $data[$key] = $name; 
             }
+            $pond=implode(",",$data);
+            //$updated = $fishpond->fill($request->all())->save();
+            $fishpond->pondImages=$pond;
+            $fishpond->save();
         }
         // dd($data);
         $pond=implode(",",$data);
