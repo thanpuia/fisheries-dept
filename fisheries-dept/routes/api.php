@@ -35,8 +35,12 @@ Route::post('login', 'PassportController@login');
 
     Route::get('tehsils','TehsilController@listOfTehsils');
     Route::post('checkApproval/{id}','PassportController@checkApprove');
+
+    
 });
 
+// Check if user_id already exist
+Route::post('checkingUser/{id}','PassportController@checkingUserId');
 
 Route::post('/searchPonds','FishPondController@searchPonds');
 Route::post('/searchTehsil','FishPondController@searchTehsil');

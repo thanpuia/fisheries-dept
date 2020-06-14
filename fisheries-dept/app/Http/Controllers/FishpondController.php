@@ -99,24 +99,6 @@ class FishpondController extends Controller
     }
 
 
-
-
-
-    public function uploadpond(Request $request, $id)
-    {
-        
-        $fishpond = auth()->user()->fishponds()->find($id);
-        
-        
-         
-         $fishpond->save();
-            return response()->json([
-                'data' => $fishpond,
-                'message' => 'success'
-            ], 500);
-    }
-
-
     public function editUserData(Request $request, $id)
     {
 
@@ -143,6 +125,29 @@ class FishpondController extends Controller
            // $insert['image'] = "$profileImage";
          }
 
+         if ($files = $request->file('pondImage_one')) {
+            $destinationPath1 = 'public/image1/'; // upload path
+            $pi1 = date('YmdHis') . "." . $files->getClientOriginalExtension();
+            $files->move($destinationPath1, $pi1);
+         }
+         if ($files = $request->file('pondImage_two')) {
+            $destinationPath2 = 'public/image2/'; // upload path
+            $pi2 = date('YmdHis') . "." . $files->getClientOriginalExtension();
+            $files->move($destinationPath2, $pi2);
+         }
+
+         if ($files = $request->file('pondImage_three')) {
+            $destinationPath3 = 'public/image3/'; // upload path
+            $pi3 = date('YmdHis') . "." . $files->getClientOriginalExtension();
+            $files->move($destinationPath3, $pi3);
+         }
+
+         if ($files = $request->file('pondImage_four')) {
+            $destinationPath4 = 'public/image4/'; // upload path
+            $pi4 = date('YmdHis') . "." . $files->getClientOriginalExtension();
+            $files->move($destinationPath4, $pi4);
+         }
+
         // UPLOAD
         //$fishpond = new Fishpond();
         $fishpond->district = $request->district;
@@ -155,6 +160,13 @@ class FishpondController extends Controller
         $fishpond->epic_no = $request->epic_no;
         $fishpond->name_of_scheme = $request->name_of_scheme;
         $fishpond->image = $profileImage;
+
+        $fishpond->pondImage_one=$pi1;
+        $fishpond->pondImage_two=$pi2;
+        $fishpond->pondImage_three=$pi3;
+        $fishpond->pondImage_four=$pi4;
+
+        
         $fishpond->lat = $request->lat;
         $fishpond->lng = $request->lng;
         $fishpond->save();
@@ -310,5 +322,5 @@ class FishpondController extends Controller
         return $image;
     }
 
-   
+    
 }
