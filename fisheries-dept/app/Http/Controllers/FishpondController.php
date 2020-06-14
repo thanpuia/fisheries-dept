@@ -33,26 +33,28 @@ class FishpondController extends Controller
          }
 
          if ($files = $request->file('pondImage_one')) {
-            $destinationPath = 'public/images/'; // upload path
-            $pondImage_one = date('YmdHis') . "." . $files->getClientOriginalExtension();
-            $files->move($destinationPath, $pondImage_one);
+            $destinationPath1 = 'public/image1/'; // upload path
+            $pi1 = date('YmdHis') . "." . $files->getClientOriginalExtension();
+            $files->move($destinationPath1, $pi1);
          }
          if ($files = $request->file('pondImage_two')) {
-            $destinationPath = 'public/images/'; // upload path
-            $pondImage_two = date('YmdHis') . "." . $files->getClientOriginalExtension();
-            $files->move($destinationPath, $pondImage_two);
+            $destinationPath2 = 'public/image2/'; // upload path
+            $pi2 = date('YmdHis') . "." . $files->getClientOriginalExtension();
+            $files->move($destinationPath2, $pi2);
          }
 
          if ($files = $request->file('pondImage_three')) {
-            $destinationPath = 'public/images/'; // upload path
-            $pondImage_three = date('YmdHis') . "." . $files->getClientOriginalExtension();
-            $files->move($destinationPath, $pondImage_three);
+            $destinationPath3 = 'public/image3/'; // upload path
+            $pi3 = date('YmdHis') . "." . $files->getClientOriginalExtension();
+            $files->move($destinationPath3, $pi3);
          }
+
          if ($files = $request->file('pondImage_four')) {
-            $destinationPath = 'public/images/'; // upload path
-            $pondImage_four = date('YmdHis') . "." . $files->getClientOriginalExtension();
-            $files->move($destinationPath, $pondImage_four);
+            $destinationPath4 = 'public/image4/'; // upload path
+            $pi4 = date('YmdHis') . "." . $files->getClientOriginalExtension();
+            $files->move($destinationPath4, $pi4);
          }
+         
 
          
         //DB UPLOAD FOR SINGLE PICTURE i.e Profile picture 
@@ -69,10 +71,10 @@ class FishpondController extends Controller
         $fishpond->name_of_scheme = $request->name_of_scheme;
         $fishpond->image = $profileImage;
 
-        $fishpond->pondImage_one=$pondImage_one;
-        $fishpond->pondImage_two=$pondImage_two;
-        $fishpond->pondImage_three=$pondImage_three;
-        $fishpond->pondImage_four=$pondImage_four;
+        $fishpond->pondImage_one=$pi1;
+        $fishpond->pondImage_two=$pi2;
+        $fishpond->pondImage_three=$pi3;
+        $fishpond->pondImage_four=$pi4;
 
         $fishpond->lat = $request->lat;
         $fishpond->lng = $request->lng;
@@ -100,27 +102,19 @@ class FishpondController extends Controller
 
 
 
-    // public function uploadpond(Request $request, $id)
-    // {
-    //     $fishpond = auth()->user()->fishponds()->find($id);
-    //     $data = [];
-    //     // if($request->hasfile('pondImage'))
-    //     // {
-    //         foreach($request->file('pondImage') as $key=>$files)
-    //         {
-    //             $name=$files->getClientOriginalName();    
-    //             $files->move('public/image', $name);      
-    //             $data[$key] = $name; 
-    //         }
-    //     // }
-    //     // $pond=implode(",",$data);
-    //     // $fishpond->pondImage=$pond;
-    //     // $fishpond->save();
-    //         return response()->json([
-    //             'data' => $data,
-    //             'message' => 'success'
-    //         ], 500);
-    // }
+    public function uploadpond(Request $request, $id)
+    {
+        
+        $fishpond = auth()->user()->fishponds()->find($id);
+        
+        
+         
+         $fishpond->save();
+            return response()->json([
+                'data' => $fishpond,
+                'message' => 'success'
+            ], 500);
+    }
 
 
     public function editUserData(Request $request, $id)
