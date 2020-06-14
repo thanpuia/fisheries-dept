@@ -46,7 +46,7 @@ class PassportController extends Controller
             'id'=>$user->id,
             'email'=>$request->email,
             'name'=>$user->name,
-            'name'=>$user->role,
+            'role'=>$user->role,
         ], 200);
         } else {
             return response()->json(['success'=>'false','error' => 'UnAuthorised'], 401);
