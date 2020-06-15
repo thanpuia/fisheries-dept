@@ -40,7 +40,7 @@ Route::post('login', 'PassportController@login');
 });
 
 // Check if user_id already exist
-Route::post('checkingUser/{id}','PassportController@checkingUserId');
+Route::get('/checkFishpondExist','PassportController@checkFishpondExist');
 
 Route::post('/searchPonds','FishPondController@searchPonds');
 Route::post('/searchTehsil','FishPondController@searchTehsil');
