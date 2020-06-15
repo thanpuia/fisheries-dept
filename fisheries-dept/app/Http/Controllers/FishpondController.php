@@ -101,22 +101,8 @@ class FishpondController extends Controller
 
     public function editUserData(Request $request, $id)
     {
-
         $fishpond = auth()->user()->fishponds()->findOrFail($id);
-        $this->validate($request, [
-            // 'district' => '',
-            // 'image' => '',
-            // 'fname'=>'',
-            // 'address'=>'',
-            // 'location_of_pond'=>'',
-            // 'tehsil'=>'',
-            // 'area'=>'',
-            // 'epic_no'=>'',
-            // 'name_of_scheme'=>'',
-            // 'lat'=>'',
-            // 'lng'=>'',
 
-        ]);
         // for single images
         if ($files = $request->file('image')) {
             $destinationPath = 'public/image/'; // upload path
@@ -173,17 +159,6 @@ class FishpondController extends Controller
             $fishpond->epic_no = $request->epic_no;
         if(!empty($request->name_of_scheme))
             $fishpond->name_of_scheme = $request->name_of_scheme;
-        // if(empty($request->image))
-        //     $fishpond->image = $profileImage;
-
-        // if(empty($request->pondImage_one))
-        // $fishpond->pondImage_one=$pi1;
-        // if(empty($request->pondImage_two))
-        // $fishpond->pondImage_two=$pi2;
-        // if(empty($request->pondImage_three))
-        // $fishpond->pondImage_three=$pi3;
-        // if(empty($request->pondImage_four))
-        // $fishpond->pondImage_four=$pi4;
 
         if(!empty($request->lat))
         $fishpond->lat = $request->lat;
@@ -200,7 +175,7 @@ class FishpondController extends Controller
         else
             return response()->json([
                 'success' => false,
-                'message' => 'Fishpind could not be added'
+                'message' => 'Fishpond could not be added'
             ], 500);
     }
 

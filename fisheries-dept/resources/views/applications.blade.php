@@ -66,50 +66,91 @@
                 {{ $applications->links() }}
             </div>
         </div>
-        <div class="container" >
-            <div class="chat-box" style="background: white;" id="sms-box">
-                <div class="open">
-                    <div class="bg-blue sms-header">Send Message
-                        <button class="sms-close-button" onclick="closeFunction()">x</button></div> 
-                    <div class="box" style="padding:20px">
-                        <form>
-                            <div class="form-group">
-                                <select class=" form-control-sm sms-input-border" style="opacity:0.7">
-                                    <option value="" disabled selected>District</option>
-                                    <option>Aizawl</option>
-                                </select>
-                            </div>
-                            <div class="form-group" style="opacity:0.7">
-                                <select class="form-control-sm sms-input-border" placeholder="tets">
-                                    <option value="" disabled selected>Tehsil</option>
-                                    <option>tehsil1123</option>
-                                </select>
-                            </div>
-                            <br>
-                            <div class="form-group" style="opacity:0.7">
-                                <textarea class="sms-input-border" id="exampleFormControlTextarea1" rows="1"
-                                placeholder="Type Your Message Here"></textarea>
-                            </div>
-                            <button type="button" class="btn btn-primary btn-md btn-block">Send</button>
-                          </form>
-                    </div>
-                <div>
-            <div>
+        <div class="chatbox chatbox--tray chatbox--empty">
+            <div class="chatbox__title">
+                <h5><a href="#">Send SMS</a></h5>
+                <button class="chatbox__title__tray">
+                    <span></span>
+                </button>
+                <button class="chatbox__title__close">
+                    <span>
+                        <svg viewBox="0 0 12 12" width="12px" height="12px">
+                            <line stroke="#FFFFFF" x1="11.75" y1="0.25" x2="0.25" y2="11.75"></line>
+                            <line stroke="#FFFFFF" x1="11.75" y1="11.75" x2="0.25" y2="0.25"></line>
+                        </svg>
+                    </span>
+                </button>
+            </div>
+            <div class="chatbox__body">
+                <div class="chatbox__body__message chatbox__body__message--left">
+                    <img src="https://s3.amazonaws.com/uifaces/faces/twitter/brad_frost/128.jpg" alt="Picture">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+                <div class="chatbox__body__message chatbox__body__message--right">
+                    <img src="https://s3.amazonaws.com/uifaces/faces/twitter/arashmil/128.jpg" alt="Picture">
+                    <p>Nulla vel turpis vulputate, tincidunt lectus sed, porta arcu.</p>
+                </div>
+                <div class="chatbox__body__message chatbox__body__message--left">
+                    <img src="https://s3.amazonaws.com/uifaces/faces/twitter/brad_frost/128.jpg" alt="Picture">
+                    <p>Curabitur consequat nisl suscipit odio porta, ornare blandit ante maximus.</p>
+                </div>
+                <div class="chatbox__body__message chatbox__body__message--right">
+                    <img src="https://s3.amazonaws.com/uifaces/faces/twitter/arashmil/128.jpg" alt="Picture">
+                    <p>Cras dui massa, placerat vel sapien sed, fringilla molestie justo.</p>
+                </div>
+                <div class="chatbox__body__message chatbox__body__message--right">
+                    <img src="https://s3.amazonaws.com/uifaces/faces/twitter/arashmil/128.jpg" alt="Picture">
+                    <p>Praesent a gravida urna. Mauris eleifend, tellus ac fringilla imperdiet, odio dolor sodales libero, vel mattis elit mauris id erat. Phasellus leo nisi, convallis in euismod at, consectetur commodo urna.</p>
+                </div>
+            </div>
+            <form class="chatbox__credentials">
+                <div class="form-group">
+                    <select name="district" class="sms-input-border">
+                        <option value="" disabled selected>Select District</option>
+                        <option>Aizawl</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <select name="district" class="sms-input-border">
+                        <option value="" disabled selected>Select Tehsil</option>
+                        <option>Tlangnuam</option>
+                    </select>
+                </div>
+                <br>
+                <div class="form-group">
+                    <textarea class="sms-input-border" rows="1" id="comment"></textarea>
+                </div>
+                <button type="submit" class="btn btn-success btn-block" style="background-color:#007bff">Enter Chat</button>
+            </form>
+            
         </div>
     </div>      
 </div>
 
 
 @endsection
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <script>
-    function openNav() {
-      document.getElementById("mySidenav").style.width = "250px";
-    }
-    
-    function closeNav() {
-      document.getElementById("mySidenav").style.width = "0";
-    }
-    function closeFunction(){
-        document.getElementById("sms-box").style.height = "30px";
-    }
+    (function($) {
+    $(document).ready(function() {
+        var $chatbox = $('.chatbox'),
+            $chatboxTitle = $('.chatbox__title'),
+            $chatboxTitleClose = $('.chatbox__title__close'),
+            $chatboxCredentials = $('.chatbox__credentials');
+        $chatboxTitle.on('click', function() {
+            $chatbox.toggleClass('chatbox--tray');
+        });
+        $chatboxTitleClose.on('click', function(e) {
+            e.stopPropagation();
+            $chatbox.addClass('chatbox--closed');
+        });
+        $chatbox.on('transitionend', function() {
+            if ($chatbox.hasClass('chatbox--closed')) $chatbox.remove();
+        });
+        $chatboxCredentials.on('submit', function(e) {
+            e.preventDefault();
+            $chatbox.removeClass('chatbox--empty');
+        });
+    });
+})(jQuery);
     </script>
