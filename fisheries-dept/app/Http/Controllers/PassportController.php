@@ -65,12 +65,10 @@ class PassportController extends Controller
 
 
 
-    public function checkFishpondExist()
+    public function checkFishpondExist($id)
     {
-
-        // dd("Test");
         $item = Fishpond::select('user_id')
-             ->where('user_id','=', 2)
+             ->where('user_id','=', $id)
              ->first();
         
         if($item)
@@ -83,7 +81,7 @@ class PassportController extends Controller
         else
         {
             return response()->json([
-                // 'data' => $item->user_id,
+                'data' => $id,
                 'message' => 'doest not exist'
             ], 500);
         }

@@ -102,26 +102,27 @@ class FishpondController extends Controller
     public function editUserData(Request $request, $id)
     {
 
-        $fishpond = auth()->user()->fishponds()->find($id);
+        $fishpond = auth()->user()->fishponds()->findOrFail($id);
         $this->validate($request, [
-            'district' => '',
-            'image' => '',
-            'fname'=>'',
-            'address'=>'',
-            'location_of_pond'=>'',
-            'tehsil'=>'',
-            'area'=>'',
-            'epic_no'=>'',
-            'name_of_scheme'=>'',
-            'lat'=>'',
-            'lng'=>'',
+            // 'district' => '',
+            // 'image' => '',
+            // 'fname'=>'',
+            // 'address'=>'',
+            // 'location_of_pond'=>'',
+            // 'tehsil'=>'',
+            // 'area'=>'',
+            // 'epic_no'=>'',
+            // 'name_of_scheme'=>'',
+            // 'lat'=>'',
+            // 'lng'=>'',
 
         ]);
-        //for single images
+        // for single images
         if ($files = $request->file('image')) {
             $destinationPath = 'public/image/'; // upload path
             $profileImage = date('YmdHis') . "." . $files->getClientOriginalExtension();
             $files->move($destinationPath, $profileImage);
+            $fishpond->image = $profileImage;
            // $insert['image'] = "$profileImage";
          }
 
@@ -129,45 +130,64 @@ class FishpondController extends Controller
             $destinationPath1 = 'public/image1/'; // upload path
             $pi1 = date('YmdHis') . "." . $files->getClientOriginalExtension();
             $files->move($destinationPath1, $pi1);
+            $fishpond->pondImage_one=$pi1;
          }
          if ($files = $request->file('pondImage_two')) {
             $destinationPath2 = 'public/image2/'; // upload path
             $pi2 = date('YmdHis') . "." . $files->getClientOriginalExtension();
             $files->move($destinationPath2, $pi2);
+            $fishpond->pondImage_two=$pi2;
          }
 
          if ($files = $request->file('pondImage_three')) {
             $destinationPath3 = 'public/image3/'; // upload path
             $pi3 = date('YmdHis') . "." . $files->getClientOriginalExtension();
             $files->move($destinationPath3, $pi3);
+            $fishpond->pondImage_three=$pi3;
          }
 
          if ($files = $request->file('pondImage_four')) {
             $destinationPath4 = 'public/image4/'; // upload path
             $pi4 = date('YmdHis') . "." . $files->getClientOriginalExtension();
             $files->move($destinationPath4, $pi4);
+            $fishpond->pondImage_four=$pi4;
          }
 
         // UPLOAD
-        //$fishpond = new Fishpond();
-        $fishpond->district = $request->district;
-        $fishpond->fname = $request->fname;
-        $fishpond->name=$request->name;
-        $fishpond->address = $request->address;
-        $fishpond->location_of_pond = $request->location_of_pond;
-        $fishpond->tehsil = $request->tehsil;
-        $fishpond->area = $request->area;
-        $fishpond->epic_no = $request->epic_no;
-        $fishpond->name_of_scheme = $request->name_of_scheme;
-        $fishpond->image = $profileImage;
+        // $fishpond = new Fishpond();
+        if(!empty($request->district))
+            $fishpond->district = $request->district;
+        if(!empty($request->fname))
+            $fishpond->fname = $request->fname;
+        if(!empty($request->name))
+            $fishpond->name=$request->name;
+        if(!empty($request->address))    
+            $fishpond->address = $request->address;
+        if(!empty($request->location_of_pond)) 
+            $fishpond->location_of_pond = $request->location_of_pond;
+        if(!empty($request->tehsil)) 
+            $fishpond->tehsil = $request->tehsil;
+        if(!empty($request->area))
+            $fishpond->area = $request->area;
+        if(!empty($request->epic_no))
+            $fishpond->epic_no = $request->epic_no;
+        if(!empty($request->name_of_scheme))
+            $fishpond->name_of_scheme = $request->name_of_scheme;
+        // if(empty($request->image))
+        //     $fishpond->image = $profileImage;
 
-        $fishpond->pondImage_one=$pi1;
-        $fishpond->pondImage_two=$pi2;
-        $fishpond->pondImage_three=$pi3;
-        $fishpond->pondImage_four=$pi4;
+        // if(empty($request->pondImage_one))
+        // $fishpond->pondImage_one=$pi1;
+        // if(empty($request->pondImage_two))
+        // $fishpond->pondImage_two=$pi2;
+        // if(empty($request->pondImage_three))
+        // $fishpond->pondImage_three=$pi3;
+        // if(empty($request->pondImage_four))
+        // $fishpond->pondImage_four=$pi4;
 
-        
+        if(!empty($request->lat))
         $fishpond->lat = $request->lat;
+        if(!empty($request->lng))
         $fishpond->lng = $request->lng;
         $fishpond->save();
 
