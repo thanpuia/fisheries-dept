@@ -25,8 +25,11 @@ class CreateFishpondsTable extends Migration
             $table->string('area')->nullable();
             $table->string('epic_no',30)->nullable();
             $table->text('name_of_scheme')->nullable();
-
-            $table->string('pondImages')->nullable();
+            
+            $table->string('pondImage_one')->nullable();
+            $table->string('pondImage_two')->nullable();
+            $table->string('pondImage_three')->nullable();
+            $table->string('pondImage_four')->nullable();
             $table->double('lat',10,8)->nullable();
             $table->double('lng',10,8)->nullable();
             $table->string('approve')->default('0')->nullable();

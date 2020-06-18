@@ -24,10 +24,10 @@ Route::post('login', 'PassportController@login');
     Route::middleware('auth:api')->group(function () {
     Route::get('user', 'PassportController@details');
  
-    Route::post('fishponds/create', 'FishpondController@store');
-    Route::put('fishponds/uploadpond/{id}','FishpondController@uploadpond');
+    Route::post('/fishponds/create', 'FishpondController@store');
+    Route::put('/fishponds/uploadpond/{id}','FishpondController@uploadpond');
     // Edit data by user
-    Route::put('fishponds/edit/{id}','FishpondController@editUserData');
+    Route::put('/fishponds/edit/{id}','FishpondController@editUserData');
     Route::get('/fishponds/pondlist','FishpondController@pondList');
     Route::post('/fishponds/search','FishpondController@search');
 
@@ -35,8 +35,12 @@ Route::post('login', 'PassportController@login');
 
     Route::get('tehsils','TehsilController@listOfTehsils');
     Route::post('checkApproval/{id}','PassportController@checkApprove');
+
+    
 });
 
+// Check if user_id already exist
+Route::post('/checkFishpondExist/{id}','PassportController@checkFishpondExist');
 
 Route::post('/searchPonds','FishPondController@searchPonds');
 Route::post('/searchTehsil','FishPondController@searchTehsil');

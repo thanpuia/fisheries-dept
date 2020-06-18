@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\User;
+use App\Fishpond;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -61,4 +62,29 @@ class PassportController extends Controller
         else
         return response()->json(['message'=>'success','data' => $data], 500);
     }
+
+
+
+    public function checkFishpondExist($id)
+    {
+        $item = Fishpond::select('user_id')
+             ->where('user_id','=', $id)
+             ->first();
+        
+        if($item)
+        {
+            return response()->json([
+                'data' => $item->user_id,
+                'message' => 'already exist'
+            ], 500);
+        }
+        else
+        {
+            return response()->json([
+                'data' => $id,
+                'message' => 'doest not exist'
+            ], 500);
+        }
+    }
+   
 }
